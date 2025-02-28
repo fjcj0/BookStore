@@ -54,6 +54,23 @@ app.get('/books/:id', async (request, response) => {
     }
 });
 
+app.put('/books/:id', async (request, response) => {
+    try {
+        if (!request.body.title || !request.body.author || !request.body.publishYear) {
+            return response.status(400).send({ message: "All fields are required" });
+        }
+        const { id } = request.params;
+        const result = await Book.findByIdAndUpdate(id, request.body);
+        if (!result) {
+            return response.status(404).json({ message: "there is no data" });
+        }
+        return response.status(200).json({ message: "data updated successfully!!" })
+    } catch (error) {
+        console.log(error.message);
+        return response.status(500).send({ message: error.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`The server is running on port ${PORT}`);
 });
