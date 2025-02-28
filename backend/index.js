@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import { Book } from './models/bookModel.js';
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
@@ -64,7 +64,21 @@ app.put('/books/:id', async (request, response) => {
         if (!result) {
             return response.status(404).json({ message: "there is no data" });
         }
-        return response.status(200).json({ message: "data updated successfully!!" })
+        return response.status(200).json({ message: "book updated successfully!!" })
+    } catch (error) {
+        console.log(error.message);
+        return response.status(500).send({ message: error.message });
+    }
+});
+
+app.delete('/books/:id', async (request, response) => {
+    try {
+        const { id } = request.params;
+        const result = await Book.findByIdAndDelete(id);
+        if (!result) {
+            return response.status(404).json({ message: "No book found with that ID" });
+        }
+        return response.status(200).json({ message: "Book deleted successfully!" });
     } catch (error) {
         console.log(error.message);
         return response.status(500).send({ message: error.message });
