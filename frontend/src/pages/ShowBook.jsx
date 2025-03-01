@@ -1,0 +1,9 @@
+import React from 'react';
+const ShowBook = () => {
+    return (
+        <div>
+            <h1>show book</h1>
+        </div>
+    );
+}
+export default ShowBook;
