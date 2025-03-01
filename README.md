@@ -4,7 +4,6 @@ A simple and elegant bookstore application that allows users to browse, add, edi
 
 ---
 
-![Bookstore Logo](https://via.placeholder.com/100x100.png?text=Bookstore)  
 > **Manage your books like a pro!** 📖💻
 
 ---
@@ -54,4 +53,3 @@ Ensure you have the following installed:
 - MongoDB (either locally or through a cloud provider like MongoDB Atlas) 🌐
 - Git (optional, for version control) 🧑‍💻
 
-### **Steps to Set Up the Project** 🏗️
