@@ -50,7 +50,7 @@ router.put('/:id', async (request, response) => {
             return response.status(400).send({ message: "All fields are required" });
         }
         const { id } = request.params;
-        const result = await Book.findByIdAndUpdate(id, request.body, { new: true }); // Added 'new: true' to return the updated document
+        const result = await Book.findByIdAndUpdate(id, request.body, { new: true });
         if (!result) {
             return response.status(404).json({ message: "There is no data with that ID" });
         }
